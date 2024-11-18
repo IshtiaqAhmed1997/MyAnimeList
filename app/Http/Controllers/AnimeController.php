@@ -77,18 +77,21 @@ class AnimeController extends Controller
                 return response()->json([
                     'success' => false,
                     'message' => 'Anime not found',
+                    'status_code'=>404
                 ], 404);
             }
 
             return response()->json([
                 'success' => true,
                 'data' => $anime,
+                'status_code'=>200
             ], 200);
         } catch (\Exception $e) {
             return response()->json([
                 'success' => false,
                 'message' => 'An error occurred while fetching the anime',
                 'error' => $e->getMessage(),
+                'status_code'=>500
             ], 500);
         }
     }
